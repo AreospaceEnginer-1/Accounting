@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="url_for('static', filename='style.css')">
+    <title>Create a New Account</title>
+</head>
+<body>
+    
+    <div class="my-form">
+
+        <!-- <form action="/create_account" method = "post"> -->
+        <form>
+            <div class="my-border">
+
+                <h1>Create a New Account</h1>
+                <p id = "comment">Creating an Account is Easy</p>
+                <hr>
+                <input type="text" class="block-objects" placeholder="First Name" name = "f_name">
+                <input type="text" class="block-objects" placeholder="Last Name" name="l_name">
+                <input type="email" class="block-objects" placeholder="Mobile Number or Email" name="email">
+                <textarea name="address" cols="20" rows="5" class="block-objects"  placeholder="Enter your Address"></textarea>
+                <input type="text" name="pincode" class="block-objects" placeholder = "Enter your Pincode">
+                <input type="text" class="block-objects" placeholder="User Name" name="u_name">
+                <input type="password" class="block-objects" placeholder="Enter your password" name="password" class="block-objects">
+                <input type="password" class="block-objects" placeholder="Retype your password" name="c_password" class="block-objects">
+
+                <div id = "DOB">
+                    <label for="DOB">Date of Birth:</label>
+                    <br>
+                    <input type="date" id="birth" name="DOB">
+                </div>
+                
+                <div id="login-checkbox">
+
+                    <input type="checkbox" id="my-checkbox">
+                    <label for="my-checkbox">Keep me signed in</label>
+
+                </div>
+                
+                <input type="submit" class="sign-btn">
+
+                <div class = "Btn">
+                   <p>Aldready Have A account</p>
+                   <a href="log-in.html">Log In</a>
+                </div>
+                
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+</html>

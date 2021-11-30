@@ -1,5 +1,4 @@
-
-from flask import Flask, request, render_template, abort, make_response, redirect, url_for
+from flask import Flask, request, render_template, make_response, redirect, url_for
 import sqlite3
 
 app = Flask('Account')
@@ -10,7 +9,7 @@ def get_uname(request):
     u_name = request.cookies.get("User Private Protectd Info", False)
 
     if not u_name:
-        redirect(url_for("login"))
+        u_name = request.form.get()
 
     return u_name
 
@@ -38,29 +37,17 @@ def lister(request):
 
     user_infos = list()
     
-    user_infos.append(request.form.get('f_name', False))
-    user_infos.append(request.form.get('l_name', False))
-    user_infos.append(request.form.get('email', False))
-    user_infos.append(request.form.get('address', False))
-    user_infos.append(request.form.get('pincode', False))
-    user_infos.append(request.form.get('DOB', False))
-    user_infos.append(request.form.get('u_name', False))
-    user_infos.append(request.form.get('password', False))
-    request.form.get('func', False)
+    user_infos.append(request.form['f_name'])
+    user_infos.append(request.form['l_name'])
+    user_infos.append(request.form['email'])
+    user_infos.append(request.form['address'])
+    user_infos.append(request.form['pincode'])
+    user_infos.append(request.form['DOB'])
+    user_infos.append(request.form['u_name'])
+    user_infos.append(request.form['password'])
+    request.form['func']
 
-    return user_infos
-
-
-def check_info(request):
-    p = str(request.form.get('password', False))
-    c_p = str(request.form.get('c_password', False))
-    
-    if p != c_p:
-        pas = ".".join([p, c_p])
-        return pas
-
-    return "<h1 Your Registering is being processed>"
-        
+    return user_infos        
 
 
 @app.route('/create_account', methods = ["POST"])
@@ -68,8 +55,6 @@ def create_account():
 
     with sqlite3.connect('ShamithApp.db', check_same_thread=False) as db:
         cur = db.cursor()
-            
-        check_info(request)
 
         user_infos = lister(request)
 
@@ -87,8 +72,9 @@ def join_account():
         cur = db.cursor()
         u_name = get_uname(request)
         cur.execute("SELECT * FROM persons WHERE U_name = ? and Password = ?", u_name)
-        
+        a = cur.fetchall()
 
+        db.commit()
         return
 
 @app.route("/log-in")

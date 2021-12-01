@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="url_for('static', filename='style.css')">
-    <title>Join Account</title>
-</head>
-<body>
-    
+{% extends "base.html" %}
+
+{% block content %}
     <div class="my-form">
         <form>
-                <div class="my-border">
-    
+            <div class="my-border">
                     <h1>Please sign in</h1>
                     <label for="emailbox" class="block-objects">Email:</label>
                     <input type="text" id="emailbox", >
@@ -29,12 +21,9 @@
                     <input type="submit" class="sign-btn">
                     
                     <div class="Btn">
-                        <a href="sign-in.html", class="Btn">Create a New Account</a>
+                        <a href="sign-in", class="Btn">Create a New Account</a>
                     </div>
-                
                 </div>
         </form>
     </div>
-    
-</body>
-</html>
+{% endblock %}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>SHAMITH ACCOUNTING</title>
+</head>
+<body>
+    <div id="header">
+            <div class = 'nav-bar'>
+                <a href="{{url_for('home')}}">Home</a>
+            </div>
+            <form action="/search" method = 'post'>
+                <div id="search">
+                    <input type="text" name="search">
+                    <input type="submit" value="&#x1F50E;&#xFE0E;">
+                </div>
+            </form>
+    </div>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

@@ -9,15 +9,48 @@
                 <h1>Create a New Account</h1>
                 <p id = "comment">Creating an Account is Easy</p>
                 <hr>
-                <input type="text" class="block-objects" placeholder="First Name" name = "f_name">
-                <input type="text" class="block-objects" placeholder="Last Name" name="l_name">
+
+                {{ form.name.label }}
+                {{ form.name }}
+                <br>
+               
+                {{ form.Gender.label }}
+                {{ form.Gender }} 
+                <br>
+
+                {{ form.Address.label }}
+                {{ form.Address }}
+                <br>
+
+                {{ form.pincode.label }}
+                {{ form.pincode }}
+                <br>
+               
+                {{ form.Age.label }}
+                {{ form.Age }}
+                <br>
+
+                {{ form.username.label }}
+                {{ form.username }}
+                <br>
+
+                {{ form.password.label }}
+                {{ from.password }}
+                <br>
+
+                {{ form.c_password.label }}
+                {{ from.c_password }}
+                <br>
+
+                {{ form.submit }}
+
                 <input type="email" class="block-objects" placeholder="Mobile Number or Email" name="email">
                 <textarea name="address" cols="20" rows="5" class="block-objects"  placeholder="Enter your Address"></textarea>
                 <input type="text" name="pincode" class="block-objects" placeholder = "Enter your Pincode">
                 <input type="text" class="block-objects" placeholder="User Name" name="u_name">
                 <input type="password" class="block-objects" placeholder="Enter your password" name="password" class="block-objects">
                 <input type="password" class="block-objects" placeholder="Retype your password" name="c_password" class="block-objects">
-
+ 
                 <div id = "DOB">
                     <label for="DOB">Date of Birth:</label>
                     <br>

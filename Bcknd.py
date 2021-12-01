@@ -1,8 +1,6 @@
-"""
-"""
-
 from flask import Flask, request, render_template, make_response, redirect, url_for
 import sqlite3
+import WTF
 
 app = Flask('Account')
 app.secret_key = "#!$1#5!R9*₹^UPP@s^₹*%2!6#10$#"
@@ -30,12 +28,6 @@ def set_cookie():
     response = make_response('This site uses cookies')
     response.set_cookie(head, u_name_pass)
 
-
-@app.route('/')
-def home():
-    return render_template('home.html')
-
-
 def lister(request):
 
     user_infos = list()
@@ -48,10 +40,21 @@ def lister(request):
     user_infos.append(request.form['DOB'])
     user_infos.append(request.form['u_name'])
     user_infos.append(request.form['password'])
-    request.form['func']
 
-    return user_infos        
+    return user_infos  
 
+
+@app.errorhandler(404)
+def ERROR404(code):
+    code = str(code)
+    code = code.split('.')
+    return render_template('not_found.html', code = code)
+
+
+@app.route('/')
+def home():
+    return render_template('home.html')
+     
 
 @app.route('/create_account', methods = ["POST"])
 def create_account():
@@ -75,7 +78,7 @@ def join_account():
         cur = db.cursor()
         u_name = get_uname(request)
         cur.execute("SELECT * FROM persons WHERE U_name = ? and Password = ?", u_name)
-        a = cur.fetchall()
+        stuff = cur.fetchall()
 
         db.commit()
         return

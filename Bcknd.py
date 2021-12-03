@@ -1,16 +1,16 @@
 from flask import Flask, request, render_template, make_response, redirect, url_for
 import sqlite3
-import WTF
+from WTF import Account
 
 app = Flask('Account')
-app.secret_key = "#!$1#5!R9*₹^UPP@s^₹*%2!6#10$#"
+app.config["SECRET_KEY"] = "#!$1#5!R9*₹^UPP@s^₹*%2!6#10$#"
 
 def get_uname(request):
     
     u_name = request.cookies.get("User Private Protectd Info", False)
 
     if not u_name:
-        u_name = request.form.get()
+        set_cookie()
 
     return u_name
 
@@ -63,11 +63,6 @@ def create_account():
         cur = db.cursor()
 
         user_infos = lister(request)
-
-        cur.execute("INSERT INTO persons (F_name, L_name, U_name, Email, Addr, PINCODE, DOB, Password) VALUES (?,?,?,?,?,?,?,?)", \
-            user_infos)
-             
-        db.commit()
 
         return redirect(url_for("login"))
 

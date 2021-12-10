@@ -1,9 +1,15 @@
 from flask import Flask, request, render_template, make_response, redirect, url_for
-import sqlite3
+from flask_sqlalcemy import SQLAlchemy
 from WTF import Account
 
-app = Flask('Account')
+app = Flask('Account') 
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///acounts.db"
 app.config["SECRET_KEY"] = "#!$1#5!R9*₹^UPP@s^₹*%2!6#10$#"
+
+db = SQLAlchemy(app) 
+class Accounts(db.Model):
+    
+    Id = db.Column(db.Integer, primary_key=True) 
 
 def get_uname(request):
     

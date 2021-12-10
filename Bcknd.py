@@ -1,5 +1,4 @@
 from flask import Flask, request, render_template, make_response, redirect, url_for
-import sqlite3
 from WTF import Account
 
 app = Flask('Account')
@@ -58,25 +57,11 @@ def home():
 
 @app.route('/create_account', methods = ["POST"])
 def create_account():
-
-    with sqlite3.connect('ShamithApp.db', check_same_thread=False) as db:
-        cur = db.cursor()
-
-        user_infos = lister(request)
-
-        return redirect(url_for("login"))
+    pass
 
 @app.route("/join_account")
 def join_account():
-
-    with sqlite3.connect('ShamithApp.db', check_same_thread=False) as db:
-        cur = db.cursor()
-        u_name = get_uname(request)
-        cur.execute("SELECT * FROM persons WHERE U_name = ? and Password = ?", u_name)
-        stuff = cur.fetchall()
-
-        db.commit()
-        return
+    pass
 
 @app.route("/log-in")
 def login():

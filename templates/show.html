@@ -3,7 +3,9 @@
 { % block content % }
     <div class = "my form">
         <div class="my-border">
-            <h1>{{ message }}</h1>
+            {% for message in messages %}
+                <h1>{{ message }}</h1>
+            {% endfor %}
         </div>
     </div>
 { % endblock %}

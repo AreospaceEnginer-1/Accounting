@@ -6,10 +6,7 @@ app = Flask('Account')
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///acounts.db"
 app.config["SECRET_KEY"] = "#!$1#5!R9*₹^UPP@s^₹*%2!6#10$#"
 
-db = SQLAlchemy(app) 
-class Accounts(db.Model):
-    
-    Id = db.Column(db.Integer, primary_key=True) 
+
 
 def get_uname(request):
     

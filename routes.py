@@ -1,8 +1,6 @@
-from flask import Flask, request, render_template, make_response, redirect, url_for
-from WTF import Account
-
-app = Flask('Account')
-app.config["SECRET_KEY"] = "#!$1#5!R9*₹^UPP@s^₹*%2!6#10$#"
+from flask import request, render_template, make_response, redirect, url_for
+from .WTF import Account
+from .__init__ import web_page
 
 def get_uname(request):
     
@@ -43,34 +41,34 @@ def lister(request):
     return user_infos  
 
 
-@app.errorhandler(404)
+@web_page.errorhandler(404)
 def ERROR404(code):
     code = str(code)
     code = code.split('.')
     return render_template('not_found.html', code = code)
 
 
-@app.route('/')
+@web_page.route('/')
 def home():
     return render_template('home.html')
      
 
-@app.route('/create_account', methods = ["POST"])
+@web_page.route('/create_account', methods = ["POST"])
 def create_account():
     pass
 
-@app.route("/join_account")
+@web_page.route("/join_account")
 def join_account():
     pass
 
-@app.route("/log-in")
+@web_page.route("/log-in")
 def login():
     return render_template('log-in.html')
 
 
-@app.route("/sign-in")
+@web_page.route("/sign-in")
 def signin():
     return render_template('sign-in.html')
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    web_page.run(host = "http://www.shamith.com", debug = True, port=12345)

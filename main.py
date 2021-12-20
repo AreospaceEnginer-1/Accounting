@@ -1,6 +1,5 @@
 from flask import Flask, request, render_template, make_response, redirect, url_for
 from .WTF import Create_Account, Login, Register
-from .Store import Accounts
 from flask import Flask, request, render_template, make_response, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 

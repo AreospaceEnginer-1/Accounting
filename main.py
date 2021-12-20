@@ -1,11 +1,16 @@
-from flask import Flask, request, render_template, make_response, redirect, url_for
-from .WTF import Create_Account, Login, Register
-from flask import Flask, request, render_template, make_response, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for
+from WTF import Login, Register
 from flask_sqlalchemy import SQLAlchemy
+from SECRET import secret_key, private_key
 
-web_page = Flask('Account')
-web_page.config["SECRET_KEY"] = "#!$1#5!R9*₹^UPP@s^₹*%2!6#10$#"
+web_page = Flask(__name__, template_folder='templates')
+web_page.config["SECRET_KEY"] = secret_key
 web_page.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"
+web_page.config['RECAPTCHA_USE_SSL'] = False
+web_page.config['RECAPTCHA_USE_TSL'] = True
+web_page.config['RECAPTCHA_PUBLIC_KEY'] = 'CS$3^PKEY'
+web_page.config['RECAPTCHA_PRIVATE_KEY'] = private_key
+web_page.config['RECAPTCHA_OPTIONS'] = {'theme': 'white'}
 db = SQLAlchemy(web_page)
 
 # def get_uname(request):
@@ -44,12 +49,16 @@ def home():
     return render_template('home.html')
      
 
-@web_page.route('/register', methods = ["POST"])
+@web_page.route('/register', methods = ["GET", "POST"])
 def register():
     form = Register()
     return render_template("sign-in.html", form = form)
 
-@web_page.route("/login")
-def join_account():
+@web_page.route("/login", methods = ["GET", "POST"])
+def login():
     form = Login()
-    return render_template("sign-in.html", form = form)
+    return render_template("log-in.html", form = form)
+
+if __name__ == '__main__':
+    web_page.debug = True
+    web_page.run(debug = True)

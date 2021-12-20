@@ -1,16 +1,17 @@
 from flask_wtf.form import FlaskForm
-from wtforms.fields.choices import SelectField
+from flask_wtf import RecaptchaField
 from wtforms.fields.numeric import IntegerField
-from wtforms.fields.simple import PasswordField, StringField, SubmitField, TextAreaField
+from wtforms.fields.simple import PasswordField, StringField, SubmitField
 from wtforms.validators import DataRequired, Email
 
 class Register(FlaskForm):
    name = StringField("Your Name", validators = [DataRequired()])
    username = StringField("Username", validators = [DataRequired()])
-   gender = SelectField("Gender", choices=[('M', 'Male'), ('F', 'Female')])
+   email = StringField("Username", validators = [DataRequired(), Email()])
    age = IntegerField("Age", validators=[DataRequired()])
-   address = TextAreaField("Address", validators = [DataRequired(), Email()])
    password = PasswordField("Password", validators = [DataRequired()])
+   c_password = PasswordField("Password", validators = [DataRequired()])
+   recaptcha = RecaptchaField()
    submit = SubmitField("Register")
 
 class Login(FlaskForm):

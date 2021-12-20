@@ -1,21 +1,19 @@
-from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, TextAreaField, SubmitField, RadioField, SelectField
-from wtforms import validators, ValidationError
-from Account import Player, load, store
-from Advanced_Python.Useful_pkg.funcall import factory
+from flask_wtf.form import FlaskForm
+from wtforms.fields.choices import SelectField
+from wtforms.fields.numeric import IntegerField
+from wtforms.fields.simple import PasswordField, StringField, SubmitField, TextAreaField
+from wtforms.validators import DataRequired, Email
 
-class Create_User(Player): pass
+class Register(FlaskForm):
+   name = StringField("Your Name", validators = [DataRequired()])
+   username = StringField("Username", validators = [DataRequired()])
+   gender = SelectField("Gender", choices=[('M', 'Male'), ('F', 'Female')])
+   age = IntegerField("Age", validators=[DataRequired()])
+   address = TextAreaField("Address", validators = [DataRequired(), Email()])
+   password = PasswordField("Password", validators = [DataRequired()])
+   submit = SubmitField("Register")
 
-class Account(FlaskForm):
-   name = StringField("Your Name",[validators.DataRequired("Please enter your name.")])
-   Gender = RadioField('Gender', choices = [('M','Male'),('F','Female')])
-   Address = TextAreaField("Address",[validators.DataRequired("Please enter your email address."), \
-   validators.Email("Please enter your email address.")])
-   Age = IntegerField("Age", [validators.DataRequired("Please enter your age.")])
-   sign = SelectField("Keep me signed in.")
-   Submit = SubmitField("Send")
-
-   def upload(*args):
-        load(Create_User, "Accounts")
-        store(Create_User, args)
- 
+class Login(FlaskForm):
+   username = StringField("Username", validators = [DataRequired()])
+   password = PasswordField("Password", validators = [DataRequired()])
+   submit = SubmitField("Login")

@@ -11,52 +11,52 @@
                 <hr>
 
                 {{ form.name.label }}
-                {{ form.name }}
-                <br>
-               
-                {{ form.Gender.label }}
-                {{ form.Gender }} 
-                <br>
-
-                {{ form.Address.label }}
-                {{ form.Address }}
-                <br>
-
-                {{ form.pincode.label }}
-                {{ form.pincode }}
-                <br>
-               
-                {{ form.Age.label }}
-                {{ form.Age }}
+                {{ form.name(class="block-objects") }}
                 <br>
 
                 {{ form.username.label }}
-                {{ form.username }}
+                {{ form.username(class="block-objects") }}
+                <br>
+               
+                {{ form.gender.label }}
+                {{ form.gende(class="block-objects") }} 
+                <br>
+
+                {{ form.address.label }}
+                {{ form.address(class="block-objects") }}
+                <br>
+
+                {{ form.pincode.label }}
+                {{ form.pincode(class="block-objects") }}
+                <br>
+               
+                {{ form.age.label(class="block-objects") }}
+                {{ form.age(class="block-objects") }}
                 <br>
 
                 {{ form.password.label }}
-                {{ from.password }}
+                {{ from.password(class="block-objects") }}
                 <br>
 
                 {{ form.c_password.label }}
-                {{ from.c_password }}
+                {{ from.c_password(class="block-objects") }}
                 <br>
 
-                {{form.recapcha}}
+                {{ form.recapcha(class="block-objects") }}
 
-                {{ form.submit }}
+                {{ form.submit(class="block-objects") }}
 
-                <input type="email" class="block-objects" placeholder="Mobile Number or Email" name="email">
+                <!-- <input type="email" class="block-objects" placeholder="Mobile Number or Email" name="">
                 <textarea name="address" cols="20" rows="5" class="block-objects"  placeholder="Enter your Address"></textarea>
-                <input type="text" name="pincode" class="block-objects" placeholder = "Enter your Pincode">
-                <input type="text" class="block-objects" placeholder="User Name" name="u_name">
-                <input type="password" class="block-objects" placeholder="Enter your password" name="password" class="block-objects">
-                <input type="password" class="block-objects" placeholder="Retype your password" name="c_password" class="block-objects">
+                <input type="text" name="" class="block-objects" placeholder = "Enter your Pincode">
+                <input type="text" class="block-objects" placeholder="User Name" name="">
+                <input type="password" class="block-objects" placeholder="Enter your password" name="" class="block-objects">
+                <input type="password" class="block-objects" placeholder="Retype your password" name="" class="block-objects">
  
                 <div id = "DOB">
                     <label for="DOB">Date of Birth:</label>
                     <br>
-                    <input type="date" id="birth" name="DOB">
+                    <input type="date" id="birth" name="">
                 </div>
                 
                 <div id="login-checkbox">
@@ -64,9 +64,7 @@
                     <input type="checkbox" id="my-checkbox">
                     <label for="my-checkbox">Keep me signed in</label>
 
-                </div>
-                
-                <input type="submit" onclick="check()" class="sign-btn">
+                </div> -->
 
                 <div class = "Btn">
                    <p>Aldready Have A account</p>

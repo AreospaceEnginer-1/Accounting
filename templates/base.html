@@ -5,20 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>SHAMITH ACCOUNTING</title>
+    <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+    <script src="app.js"></script>
     <div id="header">
             <div class = 'nav-bar'>
                 <a href="{{url_for('home')}}">Home</a>
             </div>
             <form action="/search" method = 'post'>
                 <div id="search">
-                    <input type="text" name="search">
-                    <input type="submit" value="&#x1F50E;&#xFE0E;">
+                    {{ search.data(id = "search-data") }}
+                    <input type="submit", value="&#x1F50D;">
                 </div>
             </form>
     </div>
+    {% for message in get_flashed_messages(category_filter="error") %}
+    <div class="flash flash-error">
+        <p class="flash-message">{{ message }}</p>
+        <btn class="flash-close">&#10060;</btn>
+    </div>
+    {% endfor %}
+
+    {% for message in get_flashed_messages(category_filter="info") %}
+    <div class="flash flash-info">
+        <p class="flash-message">{{ message }}</p>
+        <btn class="flash-close">&#10062;</btn>
+    </div>
+    {% endfor %}
+
+    {% for message in get_flashed_messages(category_filter="warning") %}
+    <div class="flash flash-warning">
+        <p class="flash-message">{{ message }}</p>
+        <btn class="flash-close">&#10006;</btn>
+    </div>
+    {% endfor %}
+
+    {% for form in forms %}
+        {% for field in form.fields %}
+            {% for error in field.errors %}
+                <div class="flash flash-error">
+                    <p class="flash-message">{{ error }}</p>
+                    <btn class="flash-close">&#10060;</btn>
+                </div>
+                <br>
+            {% endfor %}
+        {% endfor %}
+    {% endfor %}
+
     {% block content %}
     {% endblock %}
 </body>

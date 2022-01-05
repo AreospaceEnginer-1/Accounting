@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block title %} Create Account {% endblock %}
+
 {% block content %}
 
     <div class="my-form">
@@ -14,21 +16,26 @@
 
                 {{ form.username.label(class="block-objects") }} {{ form.username }}
                 <br>
+
+                <!--  { form.email.label(class="block-objects") } { form.email }
+                <br> -->
                
-                {{ form.age.label(class="block-objects") }} {{ form.age }}
+                <!-- { form.age.label(class="block-objects") } { form.age }
                 <br>
 
-                {{ form.password.label(class="block-objects") }} {{ form.password }}
+                { form.password.label(class="block-objects") } { form.password }
                 <br>
 
-                {{ form.c_password.label(class="block-objects") }} {{ form.c_password }}
+                { form.c_password.label(class="block-objects") } { form.c_password } -->
                 <br>
-                <br>
-                {{ form.recaptcha(class="block-objects") }}
 
                 <br>
 
                 {{ form.submit(class="sign-btn") }}
+
+                <!-- % for user in users %
+                    { user.name }
+                % endfor % -->
 
                 <!-- <input type="email" class="block-objects" placeholder="Mobile Number or Email" name="">
                 <textarea name="address" cols="20" rows="5" class="block-objects"  placeholder="Enter your Address"></textarea>
@@ -52,7 +59,7 @@
 
                 <div class = "Btn">
                     <p>Aldready Have A account</p>
-                    <a href="log-in.html">Log In</a>
+                    <a href="/login">Log In</a>
                 </div>
             </div>
         </form>
